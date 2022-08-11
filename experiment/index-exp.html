@@ -1,0 +1,133 @@
+<html>
+  <link rel="stylesheet" href="style.css">
+  <body>
+    <div class="container">
+      <div class="navbar">
+          <h1 class="page-header">Users</h1>
+          <div class="subnavbar">
+          <span class="searchbox"><input type="search"  placeholder="Search users" class="search" results="0"></input></span>
+          <span class="navbuttons">
+              <span class="navbutton" id="reputation">Reputation</span>
+              <span class="navbutton" id="newusers">New users</span>
+              <span class="navbutton" id="editor">Editors</span>
+              <span class="navbutton" id="voters">Voters</span>
+              <span class="navbutton" id="moderators">Moderators</span>
+          </span>
+      </div>
+      </div>
+      <div class="subcontainer">
+          <div class="row" id="row1">
+              <div class="box" id="box1">
+                <img class="boxavatar" id="boxAvatar1" src="img2.png" alt="img2">
+                <span class="boxtext">
+                    <div class="boxname" id="boxName1">Jesus Weiss</div>
+                      <div class="boxcontent">Troy, Mi</div>
+                      <div class="boxitems">
+                          <span class="items">clothes</span>
+                          <span class="items">stem</span>
+                      </div>
+                  </span>
+              </div>
+              <div class="box" id="box2">
+                  <img class="boxavatar" id="boxAvatar2" src="img2.png" alt="img2">
+                  <span class="boxtext">
+                      <div class="boxname" id="boxName2">Jesus Weiss</div>
+                      <div class="boxcontent">Fort Worth, Tx</div>
+                      <div class="boxitems">
+                          <span class="items">headset</span>
+                          <span class="items">gadget</span>
+                          <br><span class="items">speed</span>
+                          <span class="items">winter</span>
+                      </div>
+                  </span>
+              </div>
+              <div class="box" id="box3">                  
+                <img class="boxavatar" id="boxAvatar3" src="img2.png" alt="img2">
+                <span class="boxtext">
+                    <div class="boxname" id="boxName3">Jesus Weiss</div>
+                      <div class="boxcontent">Austin, TX</div>
+                      <div class="boxitems">
+                          <span class="items">road</span>
+                          <span class="items">mountain</span>
+                          <br><span class="items">trip</span>
+                          <span class="items">earth</span>
+                          <span class="items">nature</span>
+                      </div>
+                  </span>
+              </div>
+          </div>
+          <div class="row" id="row2">
+              <div class="box" id="box4">
+                <img class="boxavatar" id="boxAvatar4" src="img2.png" alt="img2">
+                <span class="boxtext">
+                    <div class="boxname" id="boxName4">Jesus Weiss</div>
+                      <div class="boxcontent">Cincinati, OH</div>
+                      <div class="boxitems">
+                          <span class="items">Maintainance</span>
+                          <span class="items">gears</span>
+                          <br><span class="items">frames</span>
+                          <span class="items">repair</span>
+                      </div>
+                  </span>
+              </div>
+              <div class="box" id="box5">
+                <img class="boxavatar" id="boxAvatar5" src="img2.png" alt="img2">
+                <span class="boxtext">
+                    <div class="boxname" id="boxName5">Jesus Weiss</div>
+                      <div class="boxcontent">Warrior, AL</div>
+                      <div class="boxitems">
+                          <span class="items">music</span>
+                          <span class="items">disks</span>
+                      </div>
+                  </span>
+              </div>
+              <div class="box" id="box6">
+                <img class="boxavatar" id="boxAvatar6" src="img2.png" alt="img2">
+                <span class="boxtext">
+                    <div class="boxname" id="boxName6">Jesus Weiss</div>
+                      <div class="boxcontent">Lyndhurst, NJ</div>
+                      <div class="boxitems">
+                          <span class="items">vintage</span>
+                          <span class="items">electric</span>
+                      </div>
+                  </span>
+              </div>
+          </div>
+      </div>
+  </div>
+    <script>
+      const url =
+        "https://newsapi.org/v2/top-headlines?country=en&apiKey=277f8ff1c93f4d7c98cbb220e9fc9d5b";
+      async function getApi(url) {
+        const response = await fetch(url);
+        let data = await response.json();
+        let headlines = data.articles;
+        console.log(headlines);
+
+        //   function call headlines from API to newsbox
+
+        function getArticle(i) {
+          let arr = headlines[i];
+          let titleNews = arr.title;
+          let urlNews = arr.url;
+          let text = document.getElementById(`boxName${i}`);
+          let result = titleNews.link(urlNews);
+          text.innerHTML = result;
+        }
+
+        //   function call image from API to newsbox
+        function getImage(i) {
+          let arr = headlines[i];
+          let urlNews = arr.urlToImage;
+          let img = document.getElementById(`boxAvatar${i}`);
+          img.src = urlNews;
+        }
+        for (let i = 1; i < 10; i++) {
+          getArticle(i);
+          getImage(i);
+        }
+      }
+      getApi(url);
+    </script>
+  </body>
+</html>
