@@ -5,6 +5,14 @@
 }
 
 /*Extra Large screens - Extra large desktops*/
+.game-list a{
+    text-decoration: none;
+    color: white;
+}
+.game-store-list a{
+    text-decoration: none;
+    color: white;
+}
 .header{
     
 
@@ -108,8 +116,8 @@ h3{
 .game-list{
     margin: 30px;;
     padding: 20px;
-    height: 200px;
-    width:250px;
+    height: 300px;
+    width:300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -263,8 +271,8 @@ html {
 /*Large screens - Desktop*/
 @media screen and (max-width: 1500px) {
     .hero{
-        height: 550px !important;;
-        background-image: url("https://source.unsplash.com/HVYepJYeHdQ/1200x600");
+        height: 100% !important;;
+        background-image: url("https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80");
     }
     .hero-description{
         height: 550px
@@ -430,5 +438,6 @@ html {
     p{
         font-size: 12px;
     }
+
     
 }
